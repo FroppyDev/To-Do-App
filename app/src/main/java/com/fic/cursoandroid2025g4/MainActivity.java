@@ -17,14 +17,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.fic.cursoandroid2025g4.view.task.TaskActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextInputLayout tilUsername, tilPassword, tilEmail;
-    private TextInputEditText etUsername, etPassword, etEmail;
-    private Button btnSendData;
+    private Button btnActividad1, btnActividad2;;
 
 
     @Override
@@ -38,58 +37,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews(){
-        tilUsername = findViewById(R.id.tilUsername);
-        tilPassword = findViewById(R.id.tilPassword);
-        tilEmail = findViewById(R.id.tilEmail);
-
-        etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
-        etEmail = findViewById(R.id.etEmail);
-        btnSendData = findViewById(R.id.btnSendData);
+        btnActividad1 = findViewById(R.id.btnPrimeraActividad);
+        btnActividad2 = findViewById(R.id.btnSegundaActividad);
     }
 
     private void setupClickListener(){
-        btnSendData.setOnClickListener(view -> {
-            String username = etUsername.getText().toString().trim();
-            String password = etPassword.getText().toString().trim();
-            String email = etEmail.getText().toString().trim();
 
-            if(validateForm(username,password,email)){
-                Toast.makeText(this, "Prueba exitosa", Toast.LENGTH_SHORT).show();
-            }
+        btnActividad1.setOnClickListener(v -> {
 
+            goToActivity(1);
+
+        });
+
+        btnActividad2.setOnClickListener(v -> {
+
+            goToActivity(2);
 
         });
     }
 
-    private boolean validateForm(String username, String password, String email){
-        boolean isValid = true;
+    private void goToActivity(int activity){
 
-        //Validar nombre de usuario
-        if(username.isEmpty()){
-            tilUsername.setError(getString(R.string.activity_main_username_validate));
-            isValid = false;
-        }else{
-            tilUsername.setError(null);
+        if (activity == 1){
+
+            Intent intent = new Intent(MainActivity.this, TaskActivity.class);
+            startActivity(intent);
+
+        } else {
+
         }
 
-        //Validar correo electrónico
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            tilEmail.setError(getString(R.string.activity_main_email_validate));
-            isValid = false;
-        }else{
-            tilEmail.setError(null);
-        }
-
-        if(password.length() < 8){
-            tilPassword.setError(getString(R.string.activity_main_password_validate));
-            isValid = false;
-        }else{
-            tilPassword.setError(null);
-        }
-
-
-
-        return isValid;
     }
 }
