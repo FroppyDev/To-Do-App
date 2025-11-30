@@ -22,14 +22,15 @@
             android:layout_height="wrap_content"
             android:text="@string/TV_UNIVERSITY"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="18sp"
+            android:padding="10dp"
             android:fontFamily="monospace"
             android:gravity="center"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:textSize="14sp"
             android:textStyle="italic"
             android:fontFamily="monospace"
             android:text="@string/TV_MAJOR"
