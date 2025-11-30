@@ -44,6 +44,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
         holder.render(task, onTaskActionListener);
     }
 
+
     @Override
     public int getItemCount() {
         return taskList.size();

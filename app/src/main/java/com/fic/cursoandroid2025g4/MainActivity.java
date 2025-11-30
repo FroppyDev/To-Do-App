@@ -23,7 +23,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnActividad1, btnActividad2;;
+    public Button btnToDo;
 
 
     @Override
@@ -37,35 +37,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews(){
-        btnActividad1 = findViewById(R.id.btnPrimeraActividad);
-        btnActividad2 = findViewById(R.id.btnSegundaActividad);
+        btnToDo = findViewById(R.id.btnPrimeraActividad);
     }
 
     private void setupClickListener(){
 
-        btnActividad1.setOnClickListener(v -> {
+        btnToDo.setOnClickListener(v -> {
 
-            goToActivity(1);
-
-        });
-
-        btnActividad2.setOnClickListener(v -> {
-
-            goToActivity(2);
+            goToActivity();
 
         });
+
     }
 
-    private void goToActivity(int activity){
+    private void goToActivity(){
 
-        if (activity == 1){
-
-            Intent intent = new Intent(MainActivity.this, TaskActivity.class);
-            startActivity(intent);
-
-        } else {
-
-        }
+        Intent intent = new Intent(MainActivity.this, TaskActivity.class);
+        startActivity(intent);
 
     }
 }

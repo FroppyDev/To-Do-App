@@ -29,7 +29,7 @@
                 android:layout_gravity="center"
                 android:padding="15dp"
                 android:textStyle="bold"
-                android:text="ToDo-APP"
+                android:text="@string/app_name"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="24sp"/>
@@ -57,14 +57,13 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp">
 
-        <!-- Botón flotante inferior (original) -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabCrear"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom|end"
             android:backgroundTint="@color/secundary"
-            android:src="@drawable/add_ic"
+            android:src="@drawable/ic_add"
             app:fabSize="normal"
             app:tint="@color/white" />
     </FrameLayout>

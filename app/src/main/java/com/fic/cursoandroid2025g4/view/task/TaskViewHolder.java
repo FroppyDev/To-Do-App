@@ -2,7 +2,9 @@ package com.fic.cursoandroid2025g4.view.task;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -25,19 +27,26 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
     public void render(Task task, TaskAdapter.OnTaskActionListener onTaskActionListener) {
 
         TextView tvTask = itemView.findViewById(R.id.tvTask);
-        CheckBox cbMarcar = itemView.findViewById(R.id.cbMarcar);
+        TextView tvContent = itemView.findViewById(R.id.tvContent);
+        TextView tvDate = itemView.findViewById(R.id.date);
+        CheckBox cbCheck = itemView.findViewById(R.id.cbMarcar);
         CardView cvTaskItem = itemView.findViewById(R.id.cvTaskItem);
 
         tvTask.setText(task.task_title);
-        cbMarcar.setChecked(task.is_completed);
+        tvContent.setText(task.task_description);
+        cbCheck.setChecked(task.is_completed);
+        tvDate.setText(task.created_at);
 
-        cbMarcar.setOnClickListener(v -> {
-            task.is_completed = cbMarcar.isChecked();
+        cbCheck.setOnClickListener(v -> {
+            task.is_completed = cbCheck.isChecked();
 
             if(task.is_completed) {
                 tvTask.setPaintFlags(tvTask.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                tvContent.setPaintFlags(tvTask.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             } else {
                 tvTask.setPaintFlags(tvTask.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+                tvContent.setPaintFlags(tvTask.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+
             }
         });
 
@@ -68,8 +77,8 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
             dialog.dismiss();
         });
 
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
 
     }
-
 }
